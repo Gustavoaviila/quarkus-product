@@ -27,6 +27,10 @@ public class ProductService {
     return products;
   }
 
+  public ProductDTO getProductById(Long id){
+    return mapProductEntityToDTO(repository.findById(id));
+  }
+
   public void create(ProductDTO dto){
     repository.persist(mapProductDTOToEntity(dto));
   }

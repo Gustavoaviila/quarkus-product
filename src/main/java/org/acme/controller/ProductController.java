@@ -3,6 +3,7 @@ package org.acme.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.print.attribute.standard.Media;
 import javax.transaction.Transactional;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,6 +28,13 @@ public class ProductController {
   @Produces(MediaType.APPLICATION_JSON)
   public List<ProductDTO> findAll(){
     return service.findAll();
+  }
+
+  @GET
+  @Path("/{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public ProductDTO findProductById(@PathParam("id") Long id){
+    return service.getProductById(id);
   }
 
   @POST
